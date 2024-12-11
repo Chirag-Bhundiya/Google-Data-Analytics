@@ -33,25 +33,37 @@ async function fetchAverageVisitTimeData(period, startDate = null, endDate = nul
             ],
             dimensions: [],
             metrics: [
-                { name: 'averageSessionDuration' },
+                // { name: 'averageSessionDuration' },
+                { name: 'screenPageViews' },
+                { name: 'activeUsers' },
+                { name: 'userEngagementDuration' },
             ],
         });
 
-        let averageSessionDuration = 0;
+        let engagementTime = 0, activeUsers = 0;
+        response.rows.forEach((item) => {
+            activeUsers += parseInt(item.metricValues[1].value, 10);
+            engagementTime += parseInt(item.metricValues[2].value, 10);
+        });
 
-        // If data is available, retrieve the average session duration
-        if (response.rows.length > 0) {
-            averageSessionDuration = parseFloat(response.rows[0].metricValues[0].value);
-        }
+        let avgAngementTimePerActiveUser = 0;
+        avgAngementTimePerActiveUser = Math.round(engagementTime / activeUsers);
 
-        console.log(period, 'Average Session Duration (in minutes):', averageSessionDuration / 60);
+        // let averageSessionDuration = 0;
+
+        // // If data is available, retrieve the average session duration
+        // if (response.rows.length > 0) {
+        //     averageSessionDuration = parseFloat(response.rows[0].metricValues[0].value);
+        // }
+
+        console.log(period, 'Average Session Duration:', Math.floor(avgAngementTimePerActiveUser / 60), 'minutes', avgAngementTimePerActiveUser % 60, 'seconds');
 
         // Calculate the total time taken for the API request
         const endTime = Date.now();
         console.log(`API request time: ${endTime - startTime} ms\n`);
 
         // return averageSessionDuration;
-        return averageSessionDuration;
+        return avgAngementTimePerActiveUser;
 
     } catch (error) {
         console.error('Error fetching report:', error);

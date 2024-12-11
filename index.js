@@ -6,7 +6,7 @@ const path = require('path');
 
 const app = express();
 
-const port = 8000;
+const port = 9000;
 
 // const { runReport } = require('./services/test-report.js');
 // runReport('2024-11-01', '2024-11-07', 'Weekly');
@@ -23,11 +23,11 @@ const port = 8000;
 
 // const { fetchViewsPerActiveUser } = require('./services/fetch-views-per-active-user.js');
 // fetchViewsPerActiveUser('', '2024-11-01', '2024-11-30');
-// fetchViewsPerActiveUser('Last 7 days');
+// fetchViewsPerActiveUser('This week');
 
-const { fetchAverageVisitTimeData } = require('./services/fetch-average-visit-time.js');
-// fetchAverageVisitTimeData('', '2024-11-01', '2024-11-30');
-fetchAverageVisitTimeData('Yesterday');
+// const { fetchAverageVisitTimeData } = require('./services/fetch-average-visit-time.js');
+// fetchAverageVisitTimeData('', '2024-12-03', '2024-12-10');
+// fetchAverageVisitTimeData('This week');
 
 // const { fetchVisitorCountData } = require('./services/fetch-visitors-count.js');
 // fetchVisitorCountData('', '2024-12-03', '2024-12-09');
