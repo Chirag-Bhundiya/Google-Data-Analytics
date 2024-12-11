@@ -6,41 +6,10 @@ const path = require('path');
 
 const app = express();
 
-const port = 9000;
+const port = 8000;
 
-// const { runReport } = require('./services/test-report.js');
-// runReport('2024-11-01', '2024-11-07', 'Weekly');
-// runReport('2024-11-01', '2024-11-30', 'Monthly');
-// runReport('2023-11-01', '2024-11-01', 'Yearly');
-
-// const { fetchVisitorsByCountry } = require('./services/fetch-visitors-by-country.js');
-// fetchVisitorsByCountry('', '2024-12-03', '2024-12-09');
-// fetchVisitorsByCountry('Last 7 days');
-
-// const { fetchCountryData } = require('./services/fetch-country-data.js');
-// fetchCountryData('', '2024-12-03', '2024-12-09');
-// fetchCountryData('Last 7 days');
-
-// const { fetchViewsPerActiveUser } = require('./services/fetch-views-per-active-user.js');
-// fetchViewsPerActiveUser('', '2024-11-01', '2024-11-30');
-// fetchViewsPerActiveUser('This week');
-
-// const { fetchAverageVisitTimeData } = require('./services/fetch-average-visit-time.js');
-// fetchAverageVisitTimeData('', '2024-12-03', '2024-12-10');
-// fetchAverageVisitTimeData('This week');
-
-// const { fetchVisitorCountData } = require('./services/fetch-visitors-count.js');
-// fetchVisitorCountData('', '2024-12-03', '2024-12-09');
-// fetchVisitorCountData('Last 7 days');
-
-// const { fetchViewCountData } = require('./services/fetch-view-count.js');
-// fetchViewCountData('', '2024-12-03', '2024-12-09');
-// fetchViewCountData('Last 7 days');
-
-// const { testViewCountData } = require('./services/test.js');
-// testViewCountData('2024-11-01', '2024-11-07', 'Weekly');
-// testViewCountData('2024-11-01', '2024-11-30', 'Monthly');
-// testViewCountData('2023-11-01', '2024-11-01', 'Yearly');
+const { getAnalyticsData } = require('./googleAnalytics.js');
+getAnalyticsData();
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '', 'index.html'));
